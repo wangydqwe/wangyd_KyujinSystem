@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" pageEncoding="utf-8" %>
 <html>
 
 
@@ -23,16 +23,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/normalize.css">
 <style>
-    .right_fbox {
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        float: right;
-        left: 92%;
-        top: 30%;
-        z-index: 999;
-        background-color: rgb(200, 100, 100);
-    }
 
     .btn {
         float: right;
@@ -43,8 +33,7 @@
     #login-box {
         width: 100%;
         height: auto;
-        margin: 0 auto;
-        margin-top: 5%;
+        margin: 5% auto 0;
         text-align: center;
         border: 2px solid #EEF0F5;
         padding: 28px 40px;
@@ -72,10 +61,10 @@
 
 <header>
     <div class="container_12">
-        <div class="grid_9" style="border:0px solid red;width: 98%">
+        <div class="grid_9" style="border:0 solid red;width: 98%">
             <div class="top_header">
                 <div class="welcome">
-                    <a href="" style="font-size: 24px;text-decoration:none;">求職　求人システム</a>.
+                    <b  style="font-size: 24px;text-decoration:none;">求職　求人システム</b>.
                 </div>
             </div>
             <nav class="primary">
@@ -101,19 +90,26 @@
         <br />
 
         <div id="login-box" style="float: left;">
+            <form action="${pageContext.request.contextPath}/user/login" method="post" id="login-form">
             <div style="font-size: 20PX; color: blue;">
                 <h3>ログインしてください</h3>
                 <br />
             </div>
-            <div class="form">
+            <div class="form" >
                 <div class="item">
 
-                    <b style="font-size: 20px;">ユーザー名:</b> <input type="text" placeholder="ユーザー">
+                    <b style="font-size: 20px;">　メール　:</b>
+                    <label>
+                        <input type="email" name="email" placeholder="メール">
+                    </label>
                 </div>
                 <br />
                 <div class="item">
 
-                    <b style="font-size: 20px;">パスワード:</b> <input type="text" placeholder="パスワード">
+                    <b style="font-size: 20px;">パスワード:</b>
+                    <label>
+                        <input type="password" name="password" placeholder="パスワード">
+                    </label>
                 </div>
                 <br />
             </div>
@@ -123,7 +119,7 @@
                 <div style="width: 10px; float: left; padding: 10px;"></div>
                 <button style="width: 100px; ">新規登録</button>
             </div>
-
+            </form>
         </div>
     </div>
 </header>

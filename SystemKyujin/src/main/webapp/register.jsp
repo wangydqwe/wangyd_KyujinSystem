@@ -6,11 +6,11 @@
 
     <meta charset="utf-8">
     <title></title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
-    <link href="css/css.css" type="text/css" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
-    <link href="css/new_file.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/new_file.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,12 +20,13 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/general.css" />
-<link rel="stylesheet" href="css/s.css" />
-<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/s.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 
     .btn {
@@ -69,6 +70,9 @@
         border-radius: 4px;
     }
 
+    #username-error,#mail-error,#password-error,#kakunin-error{
+        display: none;
+    }
 </style>
 <div id="top">
     <div class="container_12">
@@ -95,7 +99,7 @@
         <div>
             <div class="top_header">
                 <div class="welcome">
-                    <b href="" style="font-size: 24px;text-decoration:none;">求職　求人システム</b>.
+                    <b style="font-size: 24px;text-decoration:none;">求職　求人システム</b>.
                 </div>
             </div>
             <nav class="primary">
@@ -128,7 +132,7 @@
                     <!-- /.sectionHeader -->
                 </div>
                 <div>
-                    <form action="${pageContext.request.contextPath}/user/register" method="post">
+                    <form action="${pageContext.request.contextPath}/user/register" method="post" id="register-form">
                         <table>
                             <tbody>
                             <tr>
@@ -136,11 +140,12 @@
                                 <td>
                                     <div>
                                         <label>
-                                            <input type="radio" name="Rtype" value="1" />
+                                            <input type="radio" name="Rtype" id="type1" value="1" />
                                         </label>&nbsp;個人&nbsp;
                                         <label>
-                                            <input type="radio" name="Rtype" value="2" />
+                                            <input type="radio" name="Rtype" id="type2" value="2" />
                                         </label>&nbsp;企業&nbsp;
+                                        <span style="color: red" id="type-error"></span>
                                     </div>
 
                                 </td>
@@ -152,7 +157,8 @@
                                 <td>
                                     <div>
                                         <label>
-                                            <input type="text"  name="Mail" placeholder="例 : 12345566@123.jp">
+                                            <input type="text"  name="Mail" placeholder="例 : 12345566@123.jp" id="usermail">
+                                            <span style="color: red" id="mail-error">${errorInfo.Mail}</span>
                                         </label>
                                     </div>
                                 </td>
@@ -164,8 +170,8 @@
                                 <td>
                                     <div>
                                         <label>
-                                            <input type="text" name="UName">
-                                            <b>${param.msg}</b>
+                                            <input type="text" name="UName" id="username">
+                                            <span style="color: red" id="username-error">${errorInfo.UName}</span>
                                         </label>
                                     </div>
                                 </td>
@@ -176,34 +182,36 @@
                                 <td>
                                     <div>
                                         <label>
-                                            <input type="password" name="UPassword">
+                                            <input type="password" name="UPassword" id="userpassword">
+                                            <span style="color: red" id="password-error"></span>
                                         </label>
                                     </div>
                                     <ul>
                                         <li>
-                                            8～12文字
+                                            8～20文字
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
                                 <th>確認パスワード<span class="str">必須</span></th>
-                                <td name="Password">
+                                <td>
                                     <div>
                                         <label>
-                                            <input type="password" name="UPassword">
+                                            <input type="password" name="kakunin" id="kakunin">
+                                            <span style="color: red" id="kakunin-error"></span>
                                         </label>
                                     </div>
                                     <ul>
                                         <li>
-                                            8～12文字
+                                            8～20文字
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                            <p class="btn"><input type="submit" value="登録する"></p>
+                            <p class="btn"><input id="btn" type="button" value="登録する"></p>
 
                     </form>
                     <!--/.contBody -->
@@ -217,6 +225,7 @@
     </div>
 
 </header>
+<script src="${pageContext.request.contextPath}/js/register.js"></script>
 </body>
 
 </html>
