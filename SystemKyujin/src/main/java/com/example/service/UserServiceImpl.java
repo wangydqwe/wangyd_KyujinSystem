@@ -7,6 +7,7 @@ import com.example.entity.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//20220703 wangyide:serviceimplの追加
 
 @Service
 @Transactional

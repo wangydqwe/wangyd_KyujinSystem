@@ -3,6 +3,7 @@ package com.example.entity;
 import lombok.Data;
 
 import java.util.Date;
+//20220703 wangyide:beanの追加
 
 @Data
 public class Role {

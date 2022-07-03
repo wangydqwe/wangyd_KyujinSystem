@@ -22,8 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+//20220703 wangyide:controllerの追加
 
-//用户开发功能
+//ユーザー機能
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -36,7 +37,8 @@ public class UserController {
         UserService = userService;
     }
     /*
-     * login
+     * login機能
+     * パラメータ：username, password,email, session
      * @return
      */
     @RequestMapping("login")
@@ -60,7 +62,8 @@ public class UserController {
 
 
     /*
-     *用户注册
+     *register機能
+     * パラメータ：user, bindingResult,role, model
      *@return
      */
     @PostMapping("/register")

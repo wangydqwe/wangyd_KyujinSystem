@@ -159,6 +159,7 @@
                                         <label>
                                             <input type="text"  name="Mail" placeholder="例 : 12345566@123.jp" id="usermail">
                                             <span style="color: red" id="mail-error">${errorInfo.Mail}</span>
+                                            <span>${errorInfo.Mail}</span>
                                         </label>
                                     </div>
                                 </td>
@@ -172,6 +173,7 @@
                                         <label>
                                             <input type="text" name="UName" id="username">
                                             <span style="color: red" id="username-error">${errorInfo.UName}</span>
+                                            <span>${errorInfo.UName}</span>
                                         </label>
                                     </div>
                                 </td>
@@ -183,7 +185,8 @@
                                     <div>
                                         <label>
                                             <input type="password" name="UPassword" id="userpassword">
-                                            <span style="color: red" id="password-error"></span>
+                                            <span style="color: red" id="password-error">${errorInfo.UPassword}</span>
+                                            <span>${errorInfo.UPassword}</span>
                                         </label>
                                     </div>
                                     <ul>
