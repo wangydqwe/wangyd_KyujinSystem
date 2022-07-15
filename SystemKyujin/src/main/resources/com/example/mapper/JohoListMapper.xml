@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.JohoListDao">
+    <resultMap id="kyushokuListResult" type="com.example.entity.Kyushoku">
+        <result column="KS_ID" property="KSId"  jdbcType="INTEGER"  />
+        <result column="KOJIN_ID" property="KojinId"/>
+        <result column="YAKUSHOKU_NAME" property="YakuShokuName"/>
+        <result column="YAKUSHOKU_SHIMEI" property="KojinName"/>
+        <result column="YAKUSHOKU_WORK" property="KiboShokuGyo"/>
+        <result column="KYOYU" property="Kyoyu"/>
+        <result column="JUSHO1" property="Jusho1"/>
+        <result column="JUSHO2" property="Jusho2"/>
+        <result column="JUSHO3" property="Jusho3"/>
+        <result column="TELE" property="Tele"/>
+        <result column="MAIL" property="Mail"/>
+        <result column="BIKO" property="Biko"/>
+        <result column="KOUSHIN_SHA" property="KouShinSha"/>
+        <result column="KOUSHIN_HIDUKE" property="KouShinHiDuke"/>
+        <result column="SAKUSEI_SHA" property="SakuSeiSha"/>
+        <result column="SAKUSEI_HIDUKE" property="SakuSeiHiDuke"/>
+        <result column="DEL_FLAG" property="DelFlag"/>
+        <result column="STATUS" property="Status"/>
+    </resultMap>
+    <!--  查询求职详细信息  -->
+    <select id="kyushokuList" resultMap="kyushokuListResult"  >
+        select KS_ID, KOJIN_ID, YAKUSHOKU_NAME, YAKUSHOKU_SHIMEI,
+               YAKUSHOKU_WORK, KYOYU, JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO,
+               KOUSHIN_SHA, KOUSHIN_HIDUKE, SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG,
+               STATUS
+        from KYUSHOKU_TABLE
+    </select>
+
+
+</mapper>

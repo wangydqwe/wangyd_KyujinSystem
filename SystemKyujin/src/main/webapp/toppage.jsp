@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" pageEncoding="utf-8" %>
 <html>
 
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
     <title></title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
-    <link href="css/css.css" type="text/css" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
-    <link href="css/new_file.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/new_file.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body style="">
@@ -19,9 +19,39 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
+
+<script src="${pageContext.request.contextPath}/js/manage.js"></script>
+
+<script type = "text/javascript">
+    window.onload = function() {
+        let rtype = '${rtype}';
+
+        let a1 = document.getElementById("a1")
+        let a2 = document.getElementById("a2")
+        let a3 = document.getElementById("a3")
+        let a4 = document.getElementById("a4")
+        let a5 = document.getElementById("a5")
+
+        if (rtype === '1'){
+            a1.style.display = "inline"
+            a2.style.display = "inline"
+            a5.style.display = "inline"
+        }else if (rtype === '2'){
+            a1.style.display = "inline"
+            a3.style.display = "inline"
+            a4.style.display = "inline"
+        }else {
+            a1.style.display = "inline"
+            a2.style.display = "inline"
+            a3.style.display = "inline"
+            a4.style.display = "inline"
+            a5.style.display = "inline"
+        }
+    }
+</script>
 <style>
     .icl-TextInput {
         border: 1px solid #949494;
@@ -46,6 +76,9 @@
         width: 100PX;
         box-sizing: border-box;
     }
+    #a1,#a2,#a3,#a4,#a5{
+        display: none;
+    }
 </style>
 <div id="top">
     <div class="container_12">
@@ -53,13 +86,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href=" ">登録</a>
+                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
                     </li>
                     <li>
-                        <a href=" ">ログイン</a>
+                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
                     </li>
                     <li>
-                        <a href=" ">ログアウト</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -67,6 +100,7 @@
     </div>
 </div>
 <header>
+    <input type="hidden" th:value="${rtype}" id="manage"/>
     <div class="container_12">
         <div class="grid_9" style="border:0 solid red;width: 98%">
             <div class="top_header">
@@ -76,25 +110,20 @@
             </div>
             <nav class="primary">
                 <ul>
-                    <li class="curent">
-                        <a href="">トップページ</a>
+                    <li>
+                        <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a href="">求職情報</a>
-                    </li>
-                    <!--
-                        作者：offline
-                        时间：2022-05-26
-                        描述： style="color: gray;pointer;pointer-events: none;background-color: gray;"
-                    -->
-                    <li>
-                        <a href="">求人情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
                     </li>
                     <li>
-                        <a href="">求人広告掲載</a>
+                        <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="">履歴書を作成</a>
+                        <a id="a4" href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
+                    </li>
+                    <li>
+                        <a id="a5" href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>

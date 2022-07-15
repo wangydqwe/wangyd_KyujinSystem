@@ -10,4 +10,7 @@ public interface UserService {
     void register(User User, Role role, UserRole UserRole);
     //用户登录
     User login(String username,String password,String mail);
+    //权限管理
+    Integer userManage(String mail);
+
 }

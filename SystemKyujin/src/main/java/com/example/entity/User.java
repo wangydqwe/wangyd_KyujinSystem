@@ -2,6 +2,7 @@ package com.example.entity;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class User {
     @Size(min = 8,max = 20,message = "{MSG_A0004}")
     private String UPassword;
     @NotBlank(message = "{MSG_A0002}")
+    @Email
     private String Mail;
     private String KouShinSha;
     private Date KouShinHiDuke;

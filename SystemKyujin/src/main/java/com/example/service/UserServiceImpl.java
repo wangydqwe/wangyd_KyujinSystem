@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService{
             role.setRname("システム管理者");
         }
 
-
         userdao.save(user);
 
         userdao.save2(role);
@@ -58,7 +57,16 @@ public class UserServiceImpl implements UserService{
         if (!user.getMail().equals(mail)) throw new RuntimeException("email输入错误");
         //3.判断密码
         if (!user.getUPassword().equals(password)) throw new RuntimeException("密码输入错误");
-
         return user;
     }
+
+    public Integer userManage(String mail){
+        //1,根据输入的email查询数据是否存在
+        User user = userdao.findByUserName(mail);
+        //2.根据id查询用户角色
+        String roleName = userdao.findByRoleName(user.getUserId());
+        //3.根据角色名字查询用户角色种类
+        return userdao.findByRoleType(roleName);
+    }
+
 }

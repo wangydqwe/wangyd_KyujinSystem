@@ -6,12 +6,13 @@ import com.example.entity.UserRole;
 import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -25,7 +26,8 @@ import java.util.Objects;
 //20220703 wangyide:controllerの追加
 
 //ユーザー機能
-@Controller
+@RestController
+@ResponseBody
 @RequestMapping("user")
 public class UserController {
 
@@ -37,11 +39,30 @@ public class UserController {
         UserService = userService;
     }
     /*
+     *manage機能
+     * パラメータ：email, model,
+     * @return
+     */
+    @RequestMapping("/manage")
+    public String manage(String email,Model model){
+        try {
+            //Manage
+            Integer roleType = UserService.userManage(email);
+            model.addAttribute("rtype",roleType);
+
+            return "forward:/user/login";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "forward:/login.jsp";
+        }
+
+    }
+    /*
      * login機能
      * パラメータ：username, password,email, session
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public String login(String username, String password,String email, HttpSession session) throws UnsupportedEncodingException {
         log.debug("用户名：{},密码：{},邮箱：{}",username,password,email);
 
@@ -50,7 +71,7 @@ public class UserController {
             User user = UserService.login(username,password,email);
             //登陆成功保存用户登陆的标记
             session.setAttribute("user",user);
-            return "redirect:/toppage.jsp";
+            return "forward:/toppage.jsp";
         }catch (Exception e){
             e.printStackTrace();
             return "redirect:/login.jsp?msg =" + URLEncoder.encode(e.getMessage(),"UTF-8");
@@ -58,8 +79,6 @@ public class UserController {
         }
 
     }
-
-
 
     /*
      *register機能
@@ -98,4 +117,5 @@ public class UserController {
 
         return "redirect:/login.jsp";
     }
+
 }

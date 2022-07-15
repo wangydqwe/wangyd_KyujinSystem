@@ -80,13 +80,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href=" ">登録</a>
+                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
                     </li>
                     <li>
-                        <a href=" ">ログイン</a>
+                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
                     </li>
                     <li>
-                        <a href=" ">ログアウト</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -105,19 +105,19 @@
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="">トップページ</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">トップページ</a>
                     </li>
                     <li>
-                        <a href="">求職情報</a>
+                        <a href="${pageContext.request.contextPath}/1.jsp">求職情報</a>
                     </li>
                     <li>
-                        <a href="">求人情報</a>
+                        <a href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="">求人広告掲載</a>
+                        <a href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
                     </li>
                     <li>
-                        <a href="">履歴書を作成</a>
+                        <a href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>
@@ -158,7 +158,7 @@
                                     <div>
                                         <label>
                                             <input type="text"  name="Mail" placeholder="例 : 12345566@123.jp" id="usermail">
-                                            <span style="color: red" id="mail-error">${errorInfo.Mail}</span>
+                                            <span style="color: red" id="mail-error"></span>
                                             <span>${errorInfo.Mail}</span>
                                         </label>
                                     </div>
@@ -172,7 +172,7 @@
                                     <div>
                                         <label>
                                             <input type="text" name="UName" id="username">
-                                            <span style="color: red" id="username-error">${errorInfo.UName}</span>
+                                            <span style="color: red" id="username-error"></span>
                                             <span>${errorInfo.UName}</span>
                                         </label>
                                     </div>
@@ -185,7 +185,7 @@
                                     <div>
                                         <label>
                                             <input type="password" name="UPassword" id="userpassword">
-                                            <span style="color: red" id="password-error">${errorInfo.UPassword}</span>
+                                            <span style="color: red" id="password-error"></span>
                                             <span>${errorInfo.UPassword}</span>
                                         </label>
                                     </div>

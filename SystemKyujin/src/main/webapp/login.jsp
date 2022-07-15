@@ -7,9 +7,9 @@
 
     <meta charset="utf-8">
     <title></title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/css.css" type="text/css" rel="stylesheet">
-    <link href="css/new_file.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/new_file.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body style="">
@@ -19,9 +19,9 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
 <style>
 
     .btn {
@@ -38,6 +38,9 @@
         border: 2px solid #EEF0F5;
         padding: 28px 40px;
     }
+    #mail-error,#password-error{
+        display: none;
+    }
 </style>
 <div id="top">
     <div class="container_12">
@@ -45,13 +48,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href=" ">登録</a>
+                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
                     </li>
                     <li>
-                        <a href=" ">ログイン</a>
+                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
                     </li>
                     <li>
-                        <a href=" ">ログアウト</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -70,19 +73,19 @@
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="">トップページ</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">トップページ</a>
                     </li>
                     <li>
-                        <a href="">求職情報</a>
+                        <a href="${pageContext.request.contextPath}/1.jsp">求職情報</a>
                     </li>
                     <li>
-                        <a href="">求人情報</a>
+                        <a href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="">求人広告掲載</a>
+                        <a href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
                     </li>
                     <li>
-                        <a href="">履歴書を作成</a>
+                        <a href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>
@@ -90,7 +93,7 @@
         <br />
 
         <div id="login-box" style="float: left;">
-            <form action="${pageContext.request.contextPath}/user/login" method="post" id="login-form">
+            <form action="${pageContext.request.contextPath}/user/manage" method="post" id="login-form">
             <div style="font-size: 20PX; color: blue;">
                 <h3>ログインしてください</h3>
                 <br />
@@ -100,7 +103,8 @@
 
                     <b style="font-size: 20px;">　メール　:</b>
                     <label>
-                        <input type="email" name="email" placeholder="メール">
+                        <input type="email" name="email" placeholder="メール" id="usermail">
+                        <span style="color: red" id="mail-error"></span>
                     </label>
                 </div>
                 <br />
@@ -108,21 +112,24 @@
 
                     <b style="font-size: 20px;">パスワード:</b>
                     <label>
-                        <input type="password" name="password" placeholder="パスワード">
+                        <input type="password" name="password" placeholder="パスワード" id="userpassword">
+                        <span style="color: red" id="password-error"></span>
                     </label>
                 </div>
                 <br />
             </div>
 
             <div class="btn">
-                <button style="width: 100px; float: left;">Login</button>
-                <div style="width: 10px; float: left; padding: 10px;"></div>
-                <button style="width: 100px; ">新規登録</button>
+                <button style="width: 100px; float: left;" id="btn" type="button">Login</button>
+                <div style="width: 10px; float: left; padding: 10px;" ></div>
+                <button style="width: 100px; " onclick="changeActionToRegister()" value="新規登録">新規登録</button>
             </div>
             </form>
         </div>
     </div>
 </header>
+<script src="${pageContext.request.contextPath}/js/login.js"></script>
+
 </body>
 
 </html>

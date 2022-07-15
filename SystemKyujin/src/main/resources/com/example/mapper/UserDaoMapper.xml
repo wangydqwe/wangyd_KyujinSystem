@@ -10,7 +10,18 @@
                SAKUSEI_SHA as SakuSeiSha, SAKUSEI_HIDUKE as SakuSeiHiDuke, DEL_FLAG as DelFlag, STATUS as Status, MAIL as Mail from USER_TABLE
         where MAIL = #{Mail}
     </select>
-
+<!--  根据用户id查询角色  -->
+    <select id="findByRoleName" parameterType="Integer" resultType="string" >
+        select R_NAME
+        from USER_ROLE_TABLE
+        where U_ID = #{Uid}
+    </select>
+<!--  根据角色名字查询用户角色种类  -->
+    <select id="findByRoleType" parameterType="string" resultType="Integer" >
+        select distinct R_TYPE
+        from ROLE_TABLE
+        where R_NAME = #{Rname}
+    </select>
     <insert id="save" parameterType="User" useGeneratedKeys="true" >
         <selectKey resultType="java.lang.Integer" keyProperty="UserId" order="AFTER" >
             SELECT S_USER.CURRVAL AS UserId from dual
@@ -100,5 +111,4 @@
             <if test="Status != null">#{Status},</if>
         </trim>
     </insert>
-
 </mapper>
