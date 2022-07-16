@@ -472,7 +472,7 @@ select,
 }
 /* button */
 button,
-input[type="button"]{
+input[type="submit"]{
     background: #7698c1;
     color: #fff;
     height: 38px;
@@ -511,8 +511,7 @@ input[type="submit"]:active{
 }
 /* Input */
 input[type="email"],
-input[type="text"],
-input[type="password"]{
+input[type="text"]{
     font:normal 12px 'PT Sans', Arial, Verdana, sans-serif;
     height: 36px;
     padding: 0 10px;

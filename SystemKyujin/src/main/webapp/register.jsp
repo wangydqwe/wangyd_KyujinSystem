@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="utf-8" %>
 <html>
 
 <head>
@@ -6,33 +6,53 @@
 
     <meta charset="utf-8">
     <title></title>
-    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/normalize.css" type="text/css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/new_file.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="css/css.css" type="text/css" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/new_file.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body id="zozotown">
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 
 <meta charset="utf-8">
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/general.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/s.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" />
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/general.css" />
+<link rel="stylesheet" href="css/s.css" />
+<link rel="stylesheet" href="css/regist.css" />
+<link rel="stylesheet" href="css/common.css" />
 <style>
+    .right_fbox {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        float: right;
+        left: 92%;
+        top: 30%;
+        z-index: 999;
+        background-color: rgb(200, 100, 100);
+    }
 
     .btn {
         float: right;
         width: 400px;
         padding: 1px;
+    }
+
+    #login-box {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 5%;
+        text-align: center;
+        border: 2px solid #EEF0F5;
+        padding: 28px 40px;
     }
 
     .rg_layout {
@@ -45,6 +65,11 @@
         padding: 30px 10px 20px 200px;
     }
 
+    .rg_left {
+        float: inherit;
+        margin: 15px;
+    }
+
     .rg_left>p:first-child {
         color: #FFD026;
         font-size: 20px;
@@ -55,12 +80,65 @@
         font-size: 20px;
     }
 
+    .rg_center {
+        float: left;
+    }
+
+    .rg_right {
+        float: right;
+        margin: 15px;
+        padding-left: 50px;
+    }
+
     .rg_right p {
         font-size: 15px;
     }
 
     .rg_right p a {
         color: coral;
+    }
+
+    .td_left {
+        width: 100px;
+        text-align: right;
+        height: 45px;
+    }
+
+    .td_right {
+        padding-left: 50px;
+    }
+
+    #username,
+    #password,
+    #email,
+    #name,
+    #tel,
+    #birthday,
+    #checkcode {
+        width: 251px;
+        height: 32px;
+        border: 1px solid #A6A6A6;
+        /*设置边框圆角*/
+        border-radius: 5px;
+        padding-left: 10px;
+    }
+
+    #checkcode {
+        width: 110px;
+    }
+
+    #img_check {
+        height: 32px;
+        vertical-align: middle;
+        /*设置图片的位置垂直居中*/
+    }
+
+    #btn_sub {
+        width: 100px;
+        height: 40px;
+        background-color: #FFD026;
+        border: 1px solid #FFD026;
+        padding-left: 10px;
     }
 
     .sectionInner {
@@ -70,8 +148,9 @@
         border-radius: 4px;
     }
 
-    #username-error,#mail-error,#password-error,#kakunin-error{
-        display: none;
+    .btn2 {
+        width: 190px;
+        padding: 20px;
     }
 </style>
 <div id="top">
@@ -80,13 +159,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
+                        <a href=" ">登録</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
+                        <a href=" ">ログイン</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
+                        <a href=" ">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -96,28 +175,28 @@
 
 <header>
     <div class="container_12">
-        <div>
+        <div class="grid_9" style="border:0px solid red;width: 98%">
             <div class="top_header">
                 <div class="welcome">
-                    <b style="font-size: 24px;text-decoration:none;">求職　求人システム</b>.
+                    <a href="" style="font-size: 24px;text-decoration:none;">求職　求人システム</a>.
                 </div>
             </div>
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/toppage.jsp">トップページ</a>
+                        <a href="">トップページ</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/1.jsp">求職情報</a>
+                        <a href="">求職情報</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
+                        <a href="">求人情報</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
+                        <a href="">求人広告掲載</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
+                        <a href="">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>
@@ -127,25 +206,21 @@
         <div class="rg_layout">
 
             <div class="sectionInner">
-                <div>
+                <div class="sectionHeader">
                     <h2><b>新規登録</b></h2>
                     <!-- /.sectionHeader -->
                 </div>
-                <div>
-                    <form action="${pageContext.request.contextPath}/user/register" method="post" id="register-form">
+                <div class="">
+                    <form  name="" action="${pageContext.request.contextPath}/user/register" method="post" class="decorateForm">
+                        <input type="hidden" name="c" value="MemberInput1">
                         <table>
                             <tbody>
                             <tr>
                                 <th>類別</th>
-                                <td>
-                                    <div>
-                                        <label>
-                                            <input type="radio" name="Rtype" id="type1" value="1" />
-                                        </label>&nbsp;個人&nbsp;
-                                        <label>
-                                            <input type="radio" name="Rtype" id="type2" value="2" />
-                                        </label>&nbsp;企業&nbsp;
-                                        <span style="color: red" id="type-error"></span>
+                                <td class="Rtype" name="Rtype">
+                                    <div style="height: 40px; font-size: 10px;">
+                                        &nbsp;<input type="radio" name="kojin" value="1" />&nbsp;個人&nbsp;
+                                        <input type="radio" name="kigyo" value="2" />&nbsp;企業&nbsp;
                                     </div>
 
                                 </td>
@@ -154,13 +229,9 @@
                             <tr>
                                 <th>メールアドレス<br><span class="str">必須</span></th>
 
-                                <td>
-                                    <div>
-                                        <label>
-                                            <input type="text"  name="Mail" placeholder="例 : 12345566@123.jp" id="usermail">
-                                            <span style="color: red" id="mail-error"></span>
-                                            <span>${errorInfo.Mail}</span>
-                                        </label>
+                                <td class="mail" name="mail">
+                                    <div class="main clearfix">
+                                        <input type="text" name="Email" value="" class="adress" placeholder="例 : 12345566@123.jp" autocomplete="email" data-email-input-form="">
                                     </div>
                                 </td>
 
@@ -168,53 +239,43 @@
                             <tr>
                                 <th>ユーザー名<br><span class="str">必須</span></th>
 
-                                <td>
-                                    <div>
-                                        <label>
-                                            <input type="text" name="UName" id="username">
-                                            <span style="color: red" id="username-error"></span>
-                                            <span>${errorInfo.UName}</span>
-                                        </label>
+                                <td name="UName">
+                                    <div class="main clearfix">
+                                        <input type="text" name="Email" value="" class="adress" placeholder="" autocomplete="email" data-email-input-form="">
                                     </div>
                                 </td>
 
                             </tr>
                             <tr>
                                 <th>パスワード<span class="str">必須</span></th>
-                                <td>
-                                    <div>
-                                        <label>
-                                            <input type="password" name="UPassword" id="userpassword">
-                                            <span style="color: red" id="password-error"></span>
-                                            <span>${errorInfo.UPassword}</span>
-                                        </label>
+                                <td name="Password">
+                                    <div class="main passwordInputWithIcon nonTarget" data-password-input-with-icon="">
+                                        <input type="password" id="login_password1" name="Password" value="" size="16" maxlength="12" data-password-type="new">
                                     </div>
-                                    <ul>
-                                        <li>
-                                            8～20文字
+                                    <ul class="m-password-validation-list" data-password-validation-list="" aria-hidden="true">
+                                        <li class="m-password-validation-list-item">
+                                            8～12文字
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
                                 <th>確認パスワード<span class="str">必須</span></th>
-                                <td>
-                                    <div>
-                                        <label>
-                                            <input type="password" name="kakunin" id="kakunin">
-                                            <span style="color: red" id="kakunin-error"></span>
-                                        </label>
+                                <td name="Password">
+                                    <div class="main passwordInputWithIcon nonTarget" data-password-input-with-icon="">
+                                        <input type="password" id="" name="Password" value="" size="16" maxlength="12" data-password-type="new">
                                     </div>
-                                    <ul>
-                                        <li>
-                                            8～20文字
+                                    <ul class="m-password-validation-list" data-password-validation-list="" aria-hidden="true">
+                                        <li class="m-password-validation-list-item">
+                                            8～12文字
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                            <p class="btn"><input id="btn" type="button" value="登録する"></p>
+                        <p class="btn"><input type="submit" value="登録する"></p>
+                        <p>&nbsp;</p>
 
                     </form>
                     <!--/.contBody -->
@@ -223,12 +284,14 @@
                 <!-- /.sectionInner -->
 
             </div>
-
+            <div id="note" class="zozoid">
+                <p>&nbsp;</p>
+                <!-- /#note -->
+            </div>
         </div>
     </div>
 
 </header>
-<script src="${pageContext.request.contextPath}/js/register.js"></script>
 </body>
 
 </html>
