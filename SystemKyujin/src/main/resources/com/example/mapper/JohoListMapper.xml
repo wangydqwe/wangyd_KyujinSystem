@@ -4,24 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.JohoListDao">
     <resultMap id="kyushokuListResult" type="com.example.entity.Kyushoku">
-        <result column="KS_ID" property="KSId"  jdbcType="INTEGER"  />
-        <result column="KOJIN_ID" property="KojinId"/>
-        <result column="YAKUSHOKU_NAME" property="YakuShokuName"/>
-        <result column="YAKUSHOKU_SHIMEI" property="KojinName"/>
-        <result column="YAKUSHOKU_WORK" property="KiboShokuGyo"/>
-        <result column="KYOYU" property="Kyoyu"/>
-        <result column="JUSHO1" property="Jusho1"/>
-        <result column="JUSHO2" property="Jusho2"/>
-        <result column="JUSHO3" property="Jusho3"/>
-        <result column="TELE" property="Tele"/>
-        <result column="MAIL" property="Mail"/>
-        <result column="BIKO" property="Biko"/>
-        <result column="KOUSHIN_SHA" property="KouShinSha"/>
-        <result column="KOUSHIN_HIDUKE" property="KouShinHiDuke"/>
-        <result column="SAKUSEI_SHA" property="SakuSeiSha"/>
-        <result column="SAKUSEI_HIDUKE" property="SakuSeiHiDuke"/>
-        <result column="DEL_FLAG" property="DelFlag"/>
-        <result column="STATUS" property="Status"/>
+        <result column="KS_ID" property="KSId"/>
+        <result column="KOJIN_ID" property="kojinId"/>
+        <result column="YAKUSHOKU_NAME" property="yakuShokuName"/>
+        <result column="YAKUSHOKU_SHIMEI" property="kojinName"/>
+        <result column="YAKUSHOKU_WORK" property="kiboShokuGyo"/>
+        <result column="KYOYU" property="kyoyu"/>
+        <result column="JUSHO1" property="jusho1"/>
+        <result column="JUSHO2" property="jusho2"/>
+        <result column="JUSHO3" property="jusho3"/>
+        <result column="TELE" property="tele"/>
+        <result column="MAIL" property="mail"/>
+        <result column="BIKO" property="biko"/>
+        <result column="KOUSHIN_SHA" property="kouShinSha"/>
+        <result column="KOUSHIN_HIDUKE" property="kouShinHiDuke"/>
+        <result column="SAKUSEI_SHA" property="sakuSeiSha"/>
+        <result column="SAKUSEI_HIDUKE" property="sakuSeiHiDuke"/>
+        <result column="DEL_FLAG" property="delFlag"/>
+        <result column="STATUS" property="status"/>
     </resultMap>
     <!--  查询求职详细信息  -->
     <select id="kyushokuList" resultMap="kyushokuListResult"  >

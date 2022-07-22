@@ -4,10 +4,10 @@ import com.example.entity.Kyushoku;
 import com.example.service.JohoListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /*、
@@ -22,17 +22,40 @@ public class JohoListController {
         this.johoListService = johoListService;
     }
 
+//    @RequestMapping("kyushoku")
+//    public String kyushokuListJoho(Model model){
+//
+//        //获取list
+//        List<Kyushoku> KyushokuList = johoListService.kyushokuList();
+//        model.addAttribute("kyushokulist",KyushokuList);
+//        return "forward:/kyushokujoho.jsp";
+//    }
     /*
      * 求職list
      */
     @RequestMapping("kyushoku")
-    public String kyushokuListJoho(HttpServletRequest request, Model model){
-
-        //获取list
+    public ModelAndView kyushokuListJoho() {
+        ModelAndView mav = new ModelAndView();
+        //设置jsp路径
+        mav.setViewName("kyushokujoho");
+        //设置数据
         List<Kyushoku> KyushokuList = johoListService.kyushokuList();
+        mav.addObject("kyushokulist",KyushokuList);
 
-        //request.setAttribute("KyushokuList",KyushokuList);
-        model.addAttribute("KyushokuList",KyushokuList);
-        return "forward:/kyushokujoho.jsp";
+        return mav;
+    }
+    /*
+     * 求職詳細
+     */
+    @RequestMapping("kojinShosai/{kojinId}")
+    public ModelAndView kojinShosai(@PathVariable("kojinId")Integer kojinId) {
+        ModelAndView mav = new ModelAndView();
+        //设置jsp路径
+        mav.setViewName("KojinShoSai");
+        //设置数据
+        List<Kyushoku> KyushokuList = johoListService.kyushokuList();
+        mav.addObject("kyushokulist",KyushokuList);
+
+        return mav;
     }
 }
