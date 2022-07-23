@@ -1,21 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pana
-  Date: 2022/06/18
-  Time: 20:34
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" pageEncoding="utf-8" %>
 <html>
 
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
     <title></title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
-    <link href="css/css.css" type="text/css" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/normalize.css" type="text/css" rel="stylesheet">
 </head>
 
 <body style="">
@@ -25,9 +18,9 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
 <style>
     .td_left {
         width: 150px;
@@ -39,49 +32,13 @@
         padding-left: 1px;
         width: 400PX;
     }
-
-    .right_fbox {
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        float: right;
-        left: 92%;
-        top: 30%;
-        z-index: 999;
-        background-color: rgb(200, 100, 100);
-    }
-
-    .icl-TextInput {
-        border: 1px solid #949494;
-        border-radius: .5rem;
-        display: -ms-flexbox;
-        display: flex;
-        align-items: center;
-        padding: .75rem 1rem;
-    }
-
-    .yosegi-InlineWhatWhere-primaryButton {
-        float: right;
-        font-size: .875rem;
-        width: 100PX;
-    }
-
-    .jobsearch-Content {
-        margin-top: 100PX;
-    }
-
-    .icl-TextInput-wrapper {
-        width: 100PX;
-        box-sizing: border-box;
-    }
-
-    #username,
-    #password,
+    #KojinName,
+    #yakuShoku,
+    #kyuYu,
+    #kinMuChi,
     #email,
-    #name,
-    #tel,
-    #birthday,
-    #checkcode {
+    #tele,
+    #biKo{
         width: 400px;
         height: 32px;
         border: 2px solid #A6A6A6;
@@ -96,7 +53,7 @@
         color: red;
     }
 
-    #btn_sub {
+    #btn_sub1,#btn_sub2 {
         width: 100px;
         height: 40px;
         background-color: #357EBD;
@@ -110,13 +67,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href=" ">登録</a>
+                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
                     </li>
                     <li>
-                        <a href=" ">ログイン</a>
+                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
                     </li>
                     <li>
-                        <a href=" ">ログアウト</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -125,7 +82,7 @@
 </div>
 <header>
     <div class="container_12">
-        <div class="grid_9" style="border:0px solid red;width: 98%">
+        <div class="grid_9" style="border:0 solid red;width: 98%">
             <div class="top_header">
                 <div class="welcome">
                     <a href="" style="font-size: 24px;text-decoration:none;">求職　求人システム</a>.
@@ -134,19 +91,19 @@
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="">トップページ</a>
+                        <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a href="">求職情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
                     </li>
                     <li>
-                        <a href="">求人情報</a>
+                        <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="">求人広告掲載</a>
+                        <a id="a4" href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
                     </li>
-                    <li class="curent">
-                        <a href="">履歴書を作成</a>
+                    <li>
+                        <a id="a5" href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>
@@ -161,49 +118,46 @@
             </div>
             <div class="rg_center">
                 <div class="rg_form">
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/list/add" method="post">
                         <table>
                             <tr>
-                                <!--label 标签的作用是当点击文字也会跳到文本输出框-->
-                                <!--for属性与ID属性对应规定 label 绑定到哪个表单元素。-->
-                                <td class="td_left"><label for="username">　氏名漢字　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="username" id="username"> </td>
+                                <td class="td_left"><label for="KojinName">　氏名漢字　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="text" name="KojinName" id="KojinName"> </td>
                             </tr>
                             <tr>
-                                <td class="td_left"><label for="name">　希望職種　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="name" id="name"> </td>
+                                <td class="td_left"><label for="yakuShoku">　希望職種　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="text" name="YakuShokuName" id="yakuShoku"> </td>
                             </tr>
                             <tr>
-                                <!--label 标签的作用是当点击文字也会跳到文本输出框-->
-                                <td class="td_left"><label for="email">　希望給与　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="username" id="username"> </td>
+                                <td class="td_left"><label for="kyuYu">　希望給与　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="text" name="Kyoyu" id="kyuYu"> </td>
                             </tr>
                             <tr>
-                                <td class="td_left"><label for="password">希望勤務地　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="username" id="username"> </td>
+                                <td class="td_left"><label for="kinMuChi">希望勤務地　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="text" name="Jusho1" id="kinMuChi"> </td>
 
                             <tr>
-                                <td class="td_left"><label for="name">　電話番号　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="name" id="name"> </td>
+                                <td class="td_left"><label for="tele">　電話番号　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="text" name="Tele" id="tele"> </td>
                             </tr>
 
                             <tr>
-                                <td class="td_left"><label for="tel"> イー メ ール　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="email" name="email" id="email"> </td>
+                                <td class="td_left"><label for="email"> イー メ ール　</label><span class="str">必須</span> </td>
+                                <td class="td_right"><input type="email" name="Mail" id="email"> </td>
                             </tr>
                             <tr>
-                                <td class="td_left"><label for="tel">その他　</label><span class="str">　　</span> </td>
+                                <td class="td_left"><label for="biKo">その他　</label><span class="str">　　</span> </td>
                                 <td class="td_right">
-                                    <textarea style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px; 				padding-left: 10px;"></textarea>
+                                    <textarea id="biKo" name="Biko" style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px; padding-left: 10px;"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div style="float: left; padding-left: 600PX; padding-top: 10PX;">
-                                        <input type="submit" value="戻る" id="btn_sub">
+                                        <input type="submit" value="戻る" id="btn_sub1">
                                     </div>
                                     <div style="float: left; padding-left: 30PX; padding-top: 10PX;">
-                                        <input type="submit" value="提出" id="btn_sub">
+                                        <input type="submit" value="提出" id="btn_sub2">
                                     </div>
 
                                 </td>
@@ -216,8 +170,6 @@
         </div>
 
     </div>
-
-    </section>
 </header>
 </body>
 

@@ -6,8 +6,8 @@
     <resultMap id="kyushokuListResult" type="com.example.entity.Kyushoku">
         <result column="KS_ID" property="KSId"/>
         <result column="KOJIN_ID" property="kojinId"/>
-        <result column="YAKUSHOKU_NAME" property="yakuShokuName"/>
-        <result column="YAKUSHOKU_SHIMEI" property="kojinName"/>
+        <result column="SHIMEI_KANJI" property="kojinName"/>
+        <result column="YAKUSHOKU" property="yakuShokuName"/>
         <result column="YAKUSHOKU_WORK" property="kiboShokuGyo"/>
         <result column="KYOYU" property="kyoyu"/>
         <result column="JUSHO1" property="jusho1"/>
@@ -25,12 +25,95 @@
     </resultMap>
     <!--  查询求职详细信息  -->
     <select id="kyushokuList" resultMap="kyushokuListResult"  >
-        select KS_ID, KOJIN_ID, YAKUSHOKU_NAME, YAKUSHOKU_SHIMEI,
-               YAKUSHOKU_WORK, KYOYU, JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO,
-               KOUSHIN_SHA, KOUSHIN_HIDUKE, SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG,
-               STATUS
+        select KS_ID, KOJIN_ID, SHIMEI_KANJI, YAKUSHOKU, YAKUSHOKU_WORK, KYOYU,
+               JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO, KOUSHIN_SHA, KOUSHIN_HIDUKE,
+               SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG, STATUS
         from KYUSHOKU_TABLE
     </select>
 
+    <!--  追加kojin  -->
+    <insert id="addKojin" parameterType="Kojin" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="KojinId" order="AFTER" >
+            select S_KOJIN.currval AS KojinId from dual
+        </selectKey>
+        insert into KOJIN_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="KojinId != null">KOJIN_ID,</if>
+            <if test="ShimeKanji != null">SHIMEI_KANJI,</if>
+            <if test="RirekiSu != null">RIREKI_SU,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="KojinId != null">#{KojinId},</if>
+            <if test="ShimeKanji != null">#{ShimeKanji},</if>
+            <if test="RirekiSu != null">#{RirekiSu},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
+    <!--  追加kyushoku  -->
+    <insert id="addKyuShoku" parameterType="Kyushoku" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="KSId" order="AFTER" >
+            select S_KYUSHOKU.currval AS KSId from dual
+        </selectKey>
+        insert into KYUSHOKU_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="KSId != null">KS_ID,</if>
+            <if test="KojinId != null">KOJIN_ID,</if>
+            <if test="KojinName != null">SHIMEI_KANJI,</if>
+            <if test="YakuShokuName != null">YAKUSHOKU,</if>
+            <if test="KiboShokuGyo != null">YAKUSHOKU_WORK,</if>
+            <if test="Kyoyu != null">KYOYU,</if>
+            <if test="Jusho1 != null">JUSHO1,</if>
+            <if test="Jusho2 != null">JUSHO2,</if>
+            <if test="Jusho3 != null">JUSHO3,</if>
+            <if test="Tele != null">TELE,</if>
+            <if test="Mail != null">MAIL,</if>
+            <if test="Biko != null">BIKO,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="KSId != null">#{KSId},</if>
+            <if test="KojinId != null">#{KojinId},</if>
+            <if test="KojinName != null">#{KojinName},</if>
+            <if test="YakuShokuName != null">#{YakuShokuName},</if>
+            <if test="KiboShokuGyo != null">#{KiboShokuGyo},</if>
+            <if test="Kyoyu != null">#{Kyoyu},</if>
+            <if test="Jusho1 != null">#{Jusho1},</if>
+            <if test="Jusho2 != null">#{Jusho2},</if>
+            <if test="Jusho3 != null">#{Jusho3},</if>
+            <if test="Tele != null">#{Tele},</if>
+            <if test="Mail != null">#{Mail},</if>
+            <if test="Biko != null">#{Biko},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
 
+    <!--  根据id查询详细信息  -->
+    <select id="idByKyushoku" parameterType="Integer" resultMap="kyushokuListResult">
+        select KS_ID, KOJIN_ID, SHIMEI_KANJI, YAKUSHOKU, YAKUSHOKU_WORK, KYOYU,
+               JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO, KOUSHIN_SHA, KOUSHIN_HIDUKE,
+               SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG, STATUS
+        from KYUSHOKU_TABLE
+        where KS_ID = #{KSId}
+    </select>
 </mapper>

@@ -32,13 +32,13 @@
         padding-left: 1px;
         width: 400PX;
     }
-    #shimeiKanji,
-    #kihonShokushu,
-    #kyuyo,
-    #kimuchi,
-    #tele,
+    #KojinName,
+    #yakuShoku,
+    #kyuYu,
+    #kinMuChi,
     #email,
-    #biko{
+    #tele,
+    #biKo{
         width: 400px;
         height: 32px;
         border: 2px solid #A6A6A6;
@@ -114,54 +114,55 @@
         <br />
         <div class="rg_layout">
             <div class="rg_left">
-                <h2>個人情報変更</h2>
+                <h2>個人情報変更確認画面</h2>
             </div>
             <div class="rg_center">
                 <div class="rg_form">
                     <form action="#" method="post">
                         <table>
-                            <tr>
-                                <td class="td_left"><label for="shimeiKanji">　氏名漢字　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="shimeiKanji" id="shimeiKanji" value="${kyushoku.kojinName}"> </td>
-                            </tr>
-                            <tr>
-                                <td class="td_left"><label for="kihonShokushu">　希望職種　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="name" id="kihonShokushu" onfocus="" value="${kyushoku.yakuShokuName}"> </td>
-                            </tr>
-                            <tr>
-                                <td class="td_left"><label for="kyuyo">　希望給与　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="kyuyo" id="kyuyo" onfocus="" value="${kyushoku.kyoyu}"> </td>
-                            </tr>
-                            <tr>
-                                <td class="td_left"><label for="kimuchi">希望勤務地　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="kimuchi" id="kimuchi" onfocus="" value="${kyushoku.jusho1}"> </td>
+                        <tr>
+                            <td class="td_left"><label for="KojinName">　氏名漢字　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="text" name="KojinName" id="KojinName" value="${kyushoku.kojinName}"readonly> </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left"><label for="yakuShoku">　希望職種　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="text" name="YakuShokuName" id="yakuShoku" value="${kyushoku.yakuShokuName}"readonly> </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left"><label for="kyuYu">　希望給与　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="text" name="Kyoyu" id="kyuYu" value="${kyushoku.kyoyu}" readonly> </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left"><label for="kinMuChi">希望勤務地　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="text" name="Jusho1" id="kinMuChi" value="${kyushoku.jusho1}" readonly> </td>
+                        <tr>
+                            <td class="td_left"><label for="tele">　電話番号　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="text" name="Tele" id="tele" value="${kyushoku.tele}" readonly> </td>
+                        </tr>
 
-                            <tr>
-                                <td class="td_left"><label for="tele">　電話番号　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="text" name="tele" id="tele" onfocus="" value="${kyushoku.tele}"> </td>
-                            </tr>
+                        <tr>
+                            <td class="td_left"><label for="email"> イー メ ール　</label><span class="str">必須</span> </td>
+                            <td class="td_right"><input type="email" name="Mail" id="email" value="${kyushoku.mail}" readonly> </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left"><label for="biKo">その他　</label><span class="str">　　</span> </td>
 
-                            <tr>
-                                <td class="td_left"><label for="email"> イー メ ール　</label><span class="str">必須</span> </td>
-                                <td class="td_right"><input type="email" name="email" id="email" value="${kyushoku.mail}"> </td>
-                            </tr>
-                            <tr>
-                                <td class="td_left"><label for="biko">その他　</label><span class="str">　　</span> </td>
-                                <td class="td_right">
-												<textarea id="biko" style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px;padding-left: 10px;">${kyushoku.biko}</textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="center">
-                                    <div style="float: left; padding-left: 600PX; padding-top: 10PX;">
-                                        <input type="submit" value="戻る" id="btn_sub1">
-                                    </div>
-                                    <div style="float: left; padding-left: 30PX; padding-top: 10PX;">
-                                        <input type="submit" value="変更" id="btn_sub2">
-                                    </div>
+                            <td class="td_right">
+                                <textarea id="biKo" name="Biko" style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px; padding-left: 10px;" readonly >${kyushoku.biko}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <div style="float: left; padding-left: 500PX; padding-top: 10PX;">
+                                    <input type="submit" value="戻る" id="btn_sub1">
+                                </div>
+                                <div style="float: left; padding-left: 30PX; padding-top: 10PX;">
+                                    <input type="submit" value="変更" id="btn_sub2">
+                                </div>
 
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
+
                         </table>
                     </form>
                 </div>

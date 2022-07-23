@@ -58,22 +58,24 @@
         <div class="grid_9">
             <nav>
                 <ul>
-                    <li>
-                        <a href=" ">登録</a>
-                    </li>
-                    <li>
-                        <a href=" ">ログイン</a>
-                    </li>
-                    <li>
-                        <a href=" ">ログアウト</a>
-                    </li>
+                    <ul>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
+                        </li>
+                    </ul>
                 </ul>
             </nav>
         </div>
     </div>
 </div>
 <header>
-    <form>
+    <form action="${pageContext.request.contextPath}/list/detail?id=${list.kojinId}">
         <div class="container_12">
             <div class="grid_9" style="border:0 solid red;width: 98%">
                 <div class="top_header">
@@ -84,19 +86,19 @@
                 <nav class="primary">
                     <ul>
                         <li>
-                            <a href="">トップページ</a>
-                        </li>
-                        <li class="curent">
-                            <a href="">求職情報</a>
+                            <a id="a1" href="${pageContext.request.contextPath}/toppage.jsp">トップページ</a>
                         </li>
                         <li>
-                            <a href="">求人情報</a>
+                            <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
                         </li>
                         <li>
-                            <a href="">求人広告掲載</a>
+                            <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                         </li>
                         <li>
-                            <a href="">履歴書を作成</a>
+                            <a id="a4" href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
+                        </li>
+                        <li>
+                            <a id="a5" href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                         </li>
                     </ul>
                 </nav>
@@ -128,7 +130,7 @@
                             </label>
                         </td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/KojinShoSai.jsp？${list.kojinId}">${list.kojinId}</a>
+                            <a href="${pageContext.request.contextPath}/KojinShoSai.jsp?id=${list.kojinId}">${list.kojinId}</a>
                         </td>
                         <td>${list.kojinName}</td>
                         <td>${list.yakuShokuName}</td>
@@ -145,10 +147,10 @@
             <br />
             <br />
             <span style="margin-left: 800PX; ">
-                <input id="button1" type="button" value="変更" style="width: 80PX; height: 20PX; background-color: lightskyblue;"/>
+                <input id="button1" type="submit" value="変更" style="width: 80PX; height: 20PX; background-color: lightskyblue;"/>
 			</span>
             <span>
-                <input type="button" value="削除"  style="width: 80PX; height: 20PX; background-color: lightskyblue;" />
+                <input type="submit" value="削除"  style="width: 80PX; height: 20PX; background-color: lightskyblue;" />
 			</span>
         </div>
 	</form>

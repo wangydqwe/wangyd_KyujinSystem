@@ -7,8 +7,8 @@ import java.util.Date;
 public class Kyushoku {
     private Integer KSId;
     private Integer KojinId;
-    private String YakuShokuName;
     private String KojinName;
+    private String YakuShokuName;
     private String KiboShokuGyo;
     private Integer Kyoyu;
     private String Jusho1;

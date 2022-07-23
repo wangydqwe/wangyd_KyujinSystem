@@ -105,19 +105,19 @@
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="${pageContext.request.contextPath}/toppage.jsp">トップページ</a>
+                        <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/1.jsp">求職情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
+                        <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
+                        <a id="a4" href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
+                        <a id="a5" href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>
