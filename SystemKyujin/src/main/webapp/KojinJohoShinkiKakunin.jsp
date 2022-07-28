@@ -94,7 +94,7 @@
                         <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku/${rtype}">求職情報</a>
                     </li>
                     <li>
                         <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>

@@ -110,13 +110,13 @@
             <nav>
                 <ul>
                     <li>
-                        <a href=" ">登録</a>
+                        <a href="${pageContext.request.contextPath}/register.jsp">登録</a>
                     </li>
                     <li>
-                        <a href=" ">ログイン</a>
+                        <a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
                     </li>
                     <li>
-                        <a href=" ">ログアウト</a>
+                        <a href="${pageContext.request.contextPath}/toppage.jsp">ログアウト</a>
                     </li>
                 </ul>
             </nav>
@@ -134,19 +134,19 @@
             <nav class="primary">
                 <ul>
                     <li>
-                        <a href="">トップページ</a>
+                        <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a href="">求職情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
                     </li>
                     <li>
-                        <a href="">求人情報</a>
-                    </li>
-                    <li class="curent">
-                        <a href="">求人広告掲載</a>
+                        <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
                     </li>
                     <li>
-                        <a href="">履歴書を作成</a>
+                        <a id="a4" href="${pageContext.request.contextPath}/KigyoJohoToroku.jsp">求人広告掲載</a>
+                    </li>
+                    <li>
+                        <a id="a5" href="${pageContext.request.contextPath}/KojinJohoTouRoku.jsp">履歴書を作成</a>
                     </li>
                 </ul>
             </nav>

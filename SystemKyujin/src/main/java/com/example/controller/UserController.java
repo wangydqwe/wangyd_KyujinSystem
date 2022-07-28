@@ -2,20 +2,30 @@ package com.example.controller;
 
 import com.example.entity.Role;
 import com.example.entity.User;
+import com.example.entity.UserRole;
+import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.example.service.UserService;
-import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
+//20220703 wangyide:controllerの追加
 
-//用户开发功能
-@RestController
-@RequestMapping("user")
+//ユーザー機能
+@Controller
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -26,22 +36,82 @@ public class UserController {
         UserService = userService;
     }
     /*
-     *用户注册
+     *manage機能
+     * パラメータ：email, model,
+     * @return
+     */
+    @RequestMapping("/manage")
+    public String manage(String email,Model model){
+        try {
+            //Manage
+            Integer roleType = UserService.userManage(email);
+            model.addAttribute("rtype",roleType);
+            return "forward:/login";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "forward:/login";
+        }
+
+    }
+    /*
+     * login機能
+     * パラメータ：username, password,email, session
+     * @return
+     */
+    @RequestMapping("/login")
+    public String login(String username, String password,String email, HttpSession session) throws UnsupportedEncodingException {
+        log.debug("用户名：{},密码：{},邮箱：{}",username,password,email);
+
+        try {
+            //login
+            User user = UserService.login(username,password,email);
+            //登陆成功保存用户登陆的标记
+            session.setAttribute("user",user);
+            return "forward:/toppage.jsp";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "redirect:/login?msg =" + URLEncoder.encode(e.getMessage(),"UTF-8");
+
+        }
+
+    }
+
+    /*
+     *register機能
+     * パラメータ：user, bindingResult,role, model
      *@return
      */
-    @RequestMapping("register")
-    public  String register(User user,Role role) throws UnsupportedEncodingException {
-
+    @PostMapping("/register")
+    public  String register(@Valid User user, BindingResult bindingResult, Role role, Model model) {
         log.debug("用户名：{},邮箱：{}，密码：{}，类别：{}",user.getUName(),user.getUPassword(),user.getMail(),role.getRtype());
+
         try {
-            //1,注册用户
-            UserService.register(user,role);
+            Map<String,Object> map = new HashMap<>();
+            if(bindingResult.hasErrors()){
+                List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+                //遍历报错信息集合取出每一个
+                for (FieldError fieldError:fieldErrors) {
+                    System.out.println(fieldError.getField());
+                    System.out.println(fieldError.getDefaultMessage());
+                    map.put(fieldError.getField(),fieldError.getDefaultMessage());
+                }
+                model.addAttribute("errorInfo",map);
+                System.out.println("登录失败");
+            }
+
+            if (!Objects.equals(user.getMail(), "")){
+                //1,注册用户
+                UserService.register(user,role,new UserRole());
+            }else {
+                return "forward:/register";
+            }
 
         }catch (RuntimeException e){
             e.printStackTrace();
-            return "redirect:/register.jsp?msg=" + URLEncoder.encode(e.getMessage(),"UTF-8");
+            return "forward:/register";
         }
 
         return "redirect:/login.jsp";
     }
+
 }

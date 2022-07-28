@@ -5,10 +5,10 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta charset="utf-8">
     <title></title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
-    <link href="css/css.css" type="text/css" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/javascript" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/css.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/normalize.css" type="text/css" rel="stylesheet">
 </head>
 
 <body style="">
@@ -18,9 +18,9 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="css/grid.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css">
 <style>
     .td_left {
         width: 150px;
@@ -94,7 +94,7 @@
                         <a id="a1" href="javascript:location.reload();">トップページ</a>
                     </li>
                     <li>
-                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku" >求職情報</a>
+                        <a id="a2" href="${pageContext.request.contextPath}/list/kyushoku/${rtype}">求職情報</a>
                     </li>
                     <li>
                         <a id="a3" href="${pageContext.request.contextPath}/kyushokujoho.jsp">求人情報</a>
@@ -118,11 +118,13 @@
             </div>
             <div class="rg_center">
                 <div class="rg_form">
-                    <form action="#" method="post">
+                    <form action="${pageContext.request.contextPath}/list/update" method="post">
+                        <input type="hidden" name="KSId" value="${kyushoku.KSId}">
+
                         <table>
                         <tr>
                             <td class="td_left"><label for="KojinName">　氏名漢字　</label><span class="str">必須</span> </td>
-                            <td class="td_right"><input type="text" name="KojinName" id="KojinName" value="${kyushoku.kojinName}"readonly> </td>
+                            <td class="td_right"><input type="text" name="KojinName" id="KojinName" value="${kyushoku.kojinName}"> </td>
                         </tr>
                         <tr>
                             <td class="td_left"><label for="yakuShoku">　希望職種　</label><span class="str">必須</span> </td>
@@ -130,25 +132,25 @@
                         </tr>
                         <tr>
                             <td class="td_left"><label for="kyuYu">　希望給与　</label><span class="str">必須</span> </td>
-                            <td class="td_right"><input type="text" name="Kyoyu" id="kyuYu" value="${kyushoku.kyoyu}" readonly> </td>
+                            <td class="td_right"><input type="text" name="Kyoyu" id="kyuYu" value="${kyushoku.kyoyu}" > </td>
                         </tr>
                         <tr>
                             <td class="td_left"><label for="kinMuChi">希望勤務地　</label><span class="str">必須</span> </td>
-                            <td class="td_right"><input type="text" name="Jusho1" id="kinMuChi" value="${kyushoku.jusho1}" readonly> </td>
+                            <td class="td_right"><input type="text" name="Jusho1" id="kinMuChi" value="${kyushoku.jusho1}" > </td>
                         <tr>
                             <td class="td_left"><label for="tele">　電話番号　</label><span class="str">必須</span> </td>
-                            <td class="td_right"><input type="text" name="Tele" id="tele" value="${kyushoku.tele}" readonly> </td>
+                            <td class="td_right"><input type="text" name="Tele" id="tele" value="${kyushoku.tele}" > </td>
                         </tr>
 
                         <tr>
                             <td class="td_left"><label for="email"> イー メ ール　</label><span class="str">必須</span> </td>
-                            <td class="td_right"><input type="email" name="Mail" id="email" value="${kyushoku.mail}" readonly> </td>
+                            <td class="td_right"><input type="email" name="Mail" id="email" value="${kyushoku.mail}" > </td>
                         </tr>
                         <tr>
                             <td class="td_left"><label for="biKo">その他　</label><span class="str">　　</span> </td>
 
                             <td class="td_right">
-                                <textarea id="biKo" name="Biko" style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px; padding-left: 10px;" readonly >${kyushoku.biko}</textarea>
+                                <textarea id="biKo" name="Biko" style="width: 400PX; border:  2px solid #A6A6A6; border-radius: 5px; padding-left: 10px;"  >${kyushoku.biko}</textarea>
                             </td>
                         </tr>
                         <tr>

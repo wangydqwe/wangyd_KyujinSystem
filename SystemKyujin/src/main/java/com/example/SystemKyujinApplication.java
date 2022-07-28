@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.example.dao")
-public class SystemKyujinApplication {
+    public class SystemKyujinApplication {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         SpringApplication.run(SystemKyujinApplication.class, args);
     }
 

@@ -10,11 +10,11 @@ public class Kyujin {
     private Integer KaishaId;
     private String YakuShokuName;
     private String KaishaName;
+    private String KiboShokuGyo;
     private Integer Kyoyu;
     private String Jusho1;
     private String Jusho2;
     private String Jusho3;
-    private String KinmuChi;
     private Integer Tele;
     private String Mail;
     private String Biko;
