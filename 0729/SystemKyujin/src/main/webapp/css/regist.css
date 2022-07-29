@@ -1,0 +1,694 @@
+@charset "Shift_JIS";
+.decorateForm label span.radio {
+	overflow: visible;
+}
+
+
+/* --------------------------------
+	共通
+-------------------------------- */
+
+#errContainer {}
+
+#errContainer .err {
+	padding: 0 0 10px 0;
+}
+
+#errContainer .err:first-child {
+	padding-top: 15px;
+}
+
+#errContainer .err:last-child {
+	padding-bottom: 0;
+}
+
+.info {
+	font-size: 11px;
+}
+
+.info li {
+	padding: 0px 0px 0px 1em;
+	text-indent: -1em;
+}
+
+
+/* --------------------------------
+	登録フォーム（ZOZOID・外部ID共通）
+-------------------------------- */
+
+.registForm.section {
+	background: #f0f0f0;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+	margin: 60px auto 0;
+	padding: 0;
+	width: 855px;
+}
+
+.registForm .sectionInner {
+	padding: 36px 49px 40px 49px;
+	border: none!important;
+}
+
+.registForm h3 {
+	padding: 0 0 9px 0;
+}
+
+.msie .registForm tr th,
+.msie .registForm tr td {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.registForm tr td p.note {
+	color: #808080;
+	font-size: 11px;
+}
+
+.registForm tr td select.err {
+	background: #ffedf5;
+	border-color: #ffb0bd;
+}
+
+.registForm tr td.sexTypeFrm label {
+	margin: 0 25px 0 0;
+}
+
+.registForm tr td.postFrm p.searchZip {
+	margin: 12px 0 0 338px;
+}
+
+.registForm tr td.postFrm input,
+.registForm tr td.passFrm input {
+	width: 241px;
+	box-sizing: border-box;
+	height: 42px;
+}
+
+.registForm tr td.mailFrm input {
+	width: 307px;
+}
+
+.registForm tr td .sub {
+	margin: 12px 0 0 0;
+}
+
+.registForm tr td.mailFrm .main input {
+	display: inline-block;
+	float: left;
+}
+
+.registForm tr td.mailFrm p.note {
+	margin-top: 10px;
+}
+
+.registForm .confTxt {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+
+.registForm .btn .gBtn {
+	margin-top: 15px;
+	width: 237px;
+}
+
+#note.zozoid {
+	color: #808080;
+	font-size: 10px;
+	margin: 15px auto 0 auto;
+	width: 855px;
+}
+
+#registAgree.registAgree {
+	color: #5a5a5a;
+}
+
+
+/*-------------------------------------
+	メール送信完了
+-------------------------------------*/
+
+#sendComplete {
+	margin: 110px auto 0 auto;
+}
+
+#sendComplete h3 {
+	font-size: 23px;
+	text-align: center;
+}
+
+#sendComplete p.txt {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+
+#sendComplete .noteContainer {
+	color: #808080;
+	font-size: 10px;
+	font-size: 11px;
+	line-height: 1.7;
+	margin: 58px auto 0 auto;
+	width: 600px;
+}
+
+
+/*-------------------------------------
+	エラー（ZOZOID・外部ID共通）
+-------------------------------------*/
+
+.registError {
+	margin: 110px auto 0 auto;
+}
+
+.registError h2 {
+	font-size: 18px;
+	text-align: center;
+}
+
+.registError p.txt {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+
+
+/*-------------------------------------
+	パスワード確認
+-------------------------------------*/
+
+#passConf {
+	margin: 70px auto 0 auto;
+	width: 545px;
+}
+
+#passConf h2 {
+	font-size: 20px;
+	margin: 18px 0 0 0;
+	text-align: center;
+}
+
+#passConf p.txt {
+	margin: 17px 0 0 0;
+	text-align: center;
+}
+
+#passConf .err {
+	margin: 15px 0 -15px 0;
+}
+
+#passConf #idpass {
+	margin: 35px 0 0 0;
+}
+
+#passConf #idpass dl {
+	margin: 17px 0 0 0;
+}
+
+#passConf #idpass dl dt {
+	color: #808080;
+	float: left;
+	font-size: 14px;
+	width: 134px;
+}
+
+#passConf #idpass dl dt.pw {
+	padding: 10px 0 0 0;
+}
+
+#passConf #idpass dl dd {}
+
+#passConf .registBtn {
+	border-top: 1px solid #D2D2D2;
+	margin: 30px 0 0 0;
+}
+
+#passConf .registBtn .gBtn {
+	width: 205px;
+}
+
+
+/*-------------------------------------
+	登録完了
+-------------------------------------*/
+
+#registComplete {
+	margin: 110px auto 0 auto;
+	padding: 0 0 50px 0;
+	width: 545px;
+}
+
+#registComplete h2 {
+	font-size: 23px;
+	margin: 18px 0 0 0;
+	text-align: center;
+}
+
+#registComplete p.lead {
+	color: #808080;
+	margin: 19px 0 0 0;
+	text-align: center;
+}
+
+#registComplete #idContainer {
+	margin: 25px auto;
+	width: 295px;
+}
+
+#registComplete #idContainer table tr {
+	border: none;
+}
+
+#registComplete #idContainer table th {
+	padding: 0 0 7px 0;
+	vertical-align: top;
+	width: 190px;
+	border-bottom: none;
+}
+
+#registComplete #idContainer table td {
+	font-size: 15px;
+	padding: 0 0 7px 0;
+	border-bottom: none;
+}
+
+#registComplete #idContainer table td span {
+	display: inline-block;
+}
+
+#registComplete #idContainer table td span.top {
+	padding-left: 0;
+}
+
+#registComplete #idContainer table td span.last {
+	border: none;
+}
+
+#registComplete .btnToTop {
+	margin: 33px auto 0 auto;
+	width: 250px;
+}
+
+#registComplete .btnToTop .gBtn {}
+
+#registComplete .btnToTop.btnCoupon {
+	width: 350px;
+}
+
+#registComplete .btnToTop.btnCoupon .gBtn.btnM {
+	width: 100%;
+}
+
+#registComplete .btnToTop.toCart a.toCart {
+	margin: 0 0 15px 0;
+}
+
+#registComplete p.lead.txtUraSale {
+	margin: 50px 0 0 0;
+}
+
+#registComplete .btnToTop.uraSale {
+	width: 400px;
+	margin-top: 23px;
+}
+
+#registComplete .btnToTop.uraSale .gBtn.btnGold {
+	background: #ed2121;
+	border-color: #ed2121;
+	color: #FFF!important;
+	font-size: 22px!important;
+	width: 100%;
+	padding: 13px 0 10px;
+}
+
+
+/*-------------------------------------
+	外部ID
+-------------------------------------*/
+
+#collaboMember {
+	background: #f0f0f0;
+	border: 1px solid #dcdcdc;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	margin: 70px auto 0 auto;
+	padding-bottom: 10px;
+	width: 666px;
+}
+
+#collaboMember .sectionInner {
+	background: none;
+	border: none;
+	margin: 0 auto;
+	padding: 33px 0 40px 0;
+	width: 510px;
+}
+
+#collaboMember h2 {
+	font-size: 22px;
+	margin: 18px 0 0 0;
+	text-align: center;
+}
+
+#collaboMember p.txt {
+	color: #808080;
+	margin: 20px 0 0 0;
+	text-align: center;
+}
+
+#collaboMember .errContainer {}
+
+#collaboMember .err {
+	margin: 15px 0 -15px 0;
+}
+
+#collaboMember table {
+	margin: 10px 0 0 0;
+}
+
+#collaboMember table tr th {
+	padding-bottom: 30px;
+	width: 148px;
+}
+
+#collaboMember table tr td {
+	padding-bottom: 30px;
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.msie7 #collaboMember table tr th,
+.msie7 #collaboMember table tr td {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+#collaboMember table tr td input {
+	width: 362px;
+}
+
+#collaboMember p.confTxt {
+	margin: 11px 0 0 0;
+	text-align: center;
+}
+
+#collaboMember .gBtn {
+	width: 285px;
+}
+
+#note.otherSite {
+	color: #808080;
+	font-size: 10px;
+	margin: 15px auto 0 auto;
+	width: 666px;
+}
+
+
+/*-------------------------------------
+	override
+-------------------------------------*/
+
+table tbody th {
+	width: 180px;
+	padding: 0;
+	color: #5a5a5a;
+}
+
+table tbody td {
+	padding: 21px 0 20px;
+}
+
+.registForm.section {
+	width: 700px;
+	margin: 34px auto 0;
+}
+
+.registForm tr td p.note {
+	font-size: 11px;
+	margin: 8px 0 0 0;
+}
+
+#registContainer.registForm td.birthFrm .note {
+	width: 390px;
+}
+
+.registForm tr td .sub {
+	margin: 5px 0 0 0;
+}
+
+#MyForm input {
+	float: none;
+}
+
+#MyForm input.gBtn {
+	width: 270px;
+	font-size: 14px;
+	margin-top: 15px;
+}
+
+.registForm tr td.postFrm {
+	position: relative;
+}
+
+.registForm tr td.postFrm p.searchZip {
+	position: absolute;
+	right: 36px;
+	top: 32px;
+	margin: 0;
+}
+
+.registForm tr td.postFrm p.searchZip .ico_blank {
+	background: url(/common_2015/img/ico/ico_blank.png) no-repeat right 0.1em;
+}
+
+.mac .registForm tr td.postFrm p.searchZip .ico_blank {
+	background-position: right top;
+}
+
+#MyForm .mailFrm input {
+	width: 400px;
+}
+
+#note.zozoid {
+	width: 700px;
+}
+
+
+/*-------------------------------------
+	スターウォーズ イベント用
+-------------------------------------*/
+
+#starWars {
+	background: #000;
+	color: #fff;
+	margin: 0 0 70px;
+	padding: 30px 0 15px;
+}
+
+#starWars .container {
+	margin: 0 auto;
+	text-align: center;
+	width: 980px;
+}
+
+#starWars .container .img {}
+
+#starWars .container .txt {
+	margin: 30px 0 0 0;
+	font-size: 14px;
+}
+
+#starWars .container .btn {
+	background: #fee714;
+	border-radius: 4px;
+	color: #000;
+	margin: 25px auto 0;
+	width: 565px;
+}
+
+#starWars .container .btn a {
+	color: #000;
+	display: block;
+	font-size: 20px;
+	padding: 15px 0;
+	text-decoration: none;
+}
+
+#starWars .container .btn a:hover {
+	opacity: 0.8;
+}
+
+#starWars .container .copy {
+	margin: 35px 0 0 0;
+}
+
+
+/*-------------------------------------
+	クーポン override
+-------------------------------------*/
+
+#regularCoupon {
+	width: 680px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+}
+
+.limitedPoint+ #regularCoupon {
+	margin-top: 45px;
+}
+
+
+/*-------------------------------------
+	リミテッドポイント
+-------------------------------------*/
+
+.limitedPoint {
+	width: 680px;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+}
+
+.limitedPointHero {}
+
+.limitedPointDeadline {
+	color: #f4a216;
+	border: solid 2px #f4a216;
+	font-weight: bold;
+	padding: 4px 40px;
+	text-align: center;
+	margin: 20px auto 10px;
+	font-size: 17px;
+	border-radius: 30px;
+	display: inline-block;
+}
+
+
+/*-------------------------------------
+	shopping配下
+-------------------------------------*/
+
+#registComplete.shoppingRegistcomplete {
+	width: 980px;
+}
+
+#registComplete.shoppingRegistcomplete .limitedPoint {
+	margin-top: 45px;
+}
+
+
+/*-------------------------------------
+	AMAZON ZOZOポイントキャンペーン
+-------------------------------------*/
+
+#registComplete.amazonCPRegistcomplete {
+	margin: 15px 0 0;
+}
+
+#registComplete.amazonCPRegistcomplete .title {
+	margin: 0;
+	line-height: 1;
+}
+
+#registComplete.amazonCPRegistcomplete .lead {
+	margin: 15px 0 0;
+	font-size: 11px;
+	color: #808080;
+	line-height: 1;
+}
+
+#amazonCPbanner {
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 35px 0;
+	width: 608px;
+	margin: 25px auto 50px;
+	text-align: center;
+}
+
+#amazonCPbanner .bannerTitle {
+	font-size: 19px;
+	line-height: 1;
+	margin-bottom: 37px;
+}
+
+#amazonCPbanner .item {
+	box-sizing: border-box;
+	float: left;
+	width: 202px;
+	border-right: 1px solid #dadada;
+	padding-bottom: 5px;
+}
+
+#amazonCPbanner .item:last-child {
+	border: none;
+}
+
+#amazonCPbanner .itemImg {
+	text-align: center;
+	margin-top: -6px;
+}
+
+#amazonCPbanner .itemImg img {
+	width: 72px;
+	height: 58px;
+	margin-bottom: 13px;
+}
+
+#amazonCPbanner .itemTitle {
+	font-size: 15px;
+	line-height: 1;
+	color: #3c3c3c;
+	margin-bottom: 16px;
+}
+
+#amazonCPbanner .itemDesc {
+	font-size: 11px;
+	color: #3c3c3c;
+}
+
+
+/*-------------------------------------
+	メルマガオプトイン チェックボックス
+-------------------------------------*/
+
+.registForm .mgCheckBox {
+	height: 17px;
+	line-height: 17px;
+	display: inline-block;
+	color: #808080;
+	margin-top: 10px;
+}
+
+
+/*-------------------------------------
+	member regist 本会員登録
+-------------------------------------*/
+
+.registForm.-regular {
+	width: 780px;
+}
+
+.registForm.-regular table tr th,
+.registForm.-regular table tr td {
+	padding: 25px 0 23px 0;
+}
+
+.registForm.-regular table .postFrmWrap th,
+.registForm.-regular table .postFrmWrap td {
+	padding: 25px 0 0 0;
+}
+
+.registForm.-regular table .prefFrmWrap th,
+.registForm.-regular table .prefFrmWrap td,
+.registForm.-regular table .add1FrmWrap th,
+.registForm.-regular table .add1FrmWrap td {
+	padding: 15px 0 0 0;
+}
+
+.registForm.-regular table .add2FrmWrap th,
+.registForm.-regular table .add2FrmWrap td {
+	padding: 15px 0 25px 0;
+}
+
+.registForm.-regular .phonFrm input {
+	width: 120px;
+}

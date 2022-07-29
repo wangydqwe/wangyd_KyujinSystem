@@ -1,0 +1,57 @@
+table {
+	border-spacing: 0;
+}
+
+*:first-child+html table {
+	border-collapse: collapse;
+}
+
+* html table {
+	border-collapse: collapse;
+}
+
+th,
+td {
+	text-align: left;
+	vertical-align: middle;
+	empty-cells: show;
+}
+
+.str,
+.unchangeable {
+	font-size: 10px;
+	color: #3c3c3c;
+	border-radius: 2px;
+	width: 103px;
+	display: inline-block;
+	background: #c8c8c8;
+	text-align: center;
+	padding: 2px 0;
+	margin: 0 0 0 10px;
+	vertical-align: middle;
+}
+
+
+/*decorateForm*/
+
+.decorateForm label span input[type="radio"] {
+	margin: 1px 1 0 20px;
+	padding: 10px;
+	
+}
+
+
+/*-------------------------------------
+	セクション
+-------------------------------------*/
+
+.sectionHeader {
+	border-bottom: 1px solid #dcdcdc;
+}
+
+#contentHeader h1,
+.sectionHeader h1,
+.sectionHeader h2 {
+	font-size: 20px;
+	padding: 0 0 6px 0;
+}

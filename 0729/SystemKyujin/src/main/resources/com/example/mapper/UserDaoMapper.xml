@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.Userdao">
+
+<!--  根据MAIL查询用户  -->
+    <select id="findByUserName" parameterType="string" resultType="com.example.entity.User" >
+        select U_ID as UserId, U_NAME as UName, U_PASSWORD as UPassword, KOUSHIN_SHA as KouShinSha, KOUSHIN_HIDUKE as KouShinHiDuke,
+               SAKUSEI_SHA as SakuSeiSha, SAKUSEI_HIDUKE as SakuSeiHiDuke, DEL_FLAG as DelFlag, STATUS as Status, MAIL as Mail from USER_TABLE
+        where MAIL = #{Mail}
+    </select>
+<!--  根据用户id查询角色  -->
+    <select id="findByRoleName" parameterType="Integer" resultType="string" >
+        select R_NAME
+        from USER_ROLE_TABLE
+        where U_ID = #{Uid}
+    </select>
+<!--  根据角色名字查询用户角色种类  -->
+    <select id="findByRoleType" parameterType="string" resultType="Integer" >
+        select distinct R_TYPE
+        from ROLE_TABLE
+        where R_NAME = #{Rname}
+    </select>
+    <insert id="registerUser" parameterType="com.example.entity.User" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="UserId" order="AFTER" >
+            SELECT S_USER.CURRVAL AS UserId from dual
+        </selectKey>
+        insert into USER_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UserId != null">U_ID,</if>
+            <if test="UName != null">U_NAME,</if>
+            <if test="UPassword != null">U_PASSWORD,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+            <if test="Mail != null">MAIL,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="UserId != null">#{UserId},</if>
+            <if test="UName != null">#{UName},</if>
+            <if test="UPassword != null">#{UPassword},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+            <if test="Mail != null">#{Mail},</if>
+        </trim>
+    </insert>
+
+    <insert id="registerRole" parameterType="com.example.entity.Role" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="Rid" order="AFTER" >
+            SELECT S_ROLE.CURRVAL AS Rid from dual
+        </selectKey>
+        insert into ROLE_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="Rid != null">R_ID,</if>
+            <if test="Rtype != null">R_TYPE,</if>
+            <if test="Rname != null">R_NAME,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="Rid != null">#{Rid},</if>
+            <if test="Rtype != null">#{Rtype},</if>
+            <if test="Rname != null">#{Rname},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
+
+    <insert id="registerUserRole" parameterType="com.example.entity.UserRole" useGeneratedKeys="true">
+        insert into USER_ROLE_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="URid != null">UR_ID,</if>
+            <if test="Uid != null">U_ID,</if>
+            <if test="Rid != null">R_ID,</if>
+            <if test="Uname != null">U_NAME,</if>
+            <if test="Rname != null">R_NAME,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="URid != null">#{URid},</if>
+            <if test="Uid != null">#{Uid},</if>
+            <if test="Rid != null">#{Rid},</if>
+            <if test="Uname != null">#{Uname},</if>
+            <if test="Rname != null">#{Rname},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
+</mapper>
