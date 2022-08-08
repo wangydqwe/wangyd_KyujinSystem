@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--　20220806 wangyide:kyujinListDaoMapperの作成-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.kyujinListDao">
+    <resultMap id="kyujinListResult" type="com.example.entity.Kyujin">
+        <result column="KJ_ID" property="KJId"/>
+        <result column="KAISHA_ID" property="kaishaId"/>
+        <result column="YAKUSHOKU_NAME" property="yakuShokuName"/>
+        <result column="KAISHA_NAME" property="kaishaName"/>
+        <result column="YAKUSHOKU_WORK" property="kiboShokuGyo"/>
+        <result column="KYOYU" property="kyoyu"/>
+        <result column="JUSHO1" property="jusho1"/>
+        <result column="JUSHO2" property="jusho2"/>
+        <result column="JUSHO3" property="jusho3"/>
+        <result column="TELE" property="tele"/>
+        <result column="MAIL" property="mail"/>
+        <result column="BIKO" property="biko"/>
+        <result column="KOUSHIN_SHA" property="kouShinSha"/>
+        <result column="KOUSHIN_HIDUKE" property="kouShinHiDuke"/>
+        <result column="SAKUSEI_SHA" property="sakuSeiSha"/>
+        <result column="SAKUSEI_HIDUKE" property="sakuSeiHiDuke"/>
+        <result column="DEL_FLAG" property="delFlag"/>
+        <result column="STATUS" property="status"/>
+    </resultMap>
+
+    <resultMap id="kaishaListResult" type="com.example.entity.Kaisha">
+        <result column="KAISHA_ID" property="kaishaId"/>
+        <result column="KAISHA_NAME" property="kaishaName"/>
+        <result column="RIREKI_SU" property="rirekiSu"/>
+        <result column="KOUSHIN_SHA" property="kouShinSha"/>
+        <result column="KOUSHIN_HIDUKE" property="kouShinHiDuke"/>
+        <result column="SAKUSEI_SHA" property="sakuSeiSha"/>
+        <result column="SAKUSEI_HIDUKE" property="sakuSeiHiDuke"/>
+        <result column="DEL_FLAG" property="delFlag"/>
+        <result column="STATUS" property="status"/>
+    </resultMap>
+    <!--  查询求职详细信息  -->
+    <select id="kyujinList" resultMap="kyujinListResult"  >
+        select KJ_ID, KAISHA_ID, YAKUSHOKU_NAME, KAISHA_NAME, YAKUSHOKU_WORK,
+               KYOYU, JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO, KOUSHIN_SHA,
+               KOUSHIN_HIDUKE, SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG, STATUS
+        from KYUJIN_TABLE
+        where DEL_FLAG = 0
+    </select>
+    <!--  根据id查询Kyujin详细信息  -->
+    <select id="idByKyujin" parameterType="Integer" resultMap="kyujinListResult">
+        select KJ_ID, KAISHA_ID, YAKUSHOKU_NAME, KAISHA_NAME, YAKUSHOKU_WORK,
+               KYOYU, JUSHO1, JUSHO2, JUSHO3, TELE, MAIL, BIKO, KOUSHIN_SHA,
+               KOUSHIN_HIDUKE, SAKUSEI_SHA, SAKUSEI_HIDUKE, DEL_FLAG, STATUS
+        from KYUJIN_TABLE
+        where KJ_ID = #{KJId}
+    </select>
+    <!--  追加kojin  -->
+    <insert id="addKaisha" parameterType="com.example.entity.Kaisha" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="KaishaId" order="AFTER" >
+            select S_KAISHA.currval AS KaiSha from dual
+        </selectKey>
+        insert into KAISHA_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="KaishaId != null">KAISHA_ID,</if>
+            <if test="KaishaName != null">KAISHA_NAME,</if>
+            <if test="RirekiSu != null">RIREKI_SU,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="KaishaId != null">#{KaishaId},</if>
+            <if test="KaishaName != null">#{KaishaName},</if>
+            <if test="RirekiSu != null">#{RirekiSu},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
+    <!--  追加kyushoku  -->
+    <insert id="addKyujin" parameterType="com.example.entity.Kyujin" useGeneratedKeys="true" >
+        <selectKey resultType="java.lang.Integer" keyProperty="KJId" order="AFTER" >
+            select S_KYUJIN.currval AS KJId from dual
+        </selectKey>
+        insert into KYUJIN_TABLE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="KJId != null">KS_ID,</if>
+            <if test="KaishaId != null">KAISHA_ID,</if>
+            <if test="YakuShokuName != null">YAKUSHOKU_NAME,</if>
+            <if test="KaishaName != null">KAISHA_NAME,</if>
+            <if test="KiboShokuGyo != null">YAKUSHOKU_WORK,</if>
+            <if test="Kyoyu != null">KYOYU,</if>
+            <if test="Jusho1 != null">JUSHO1,</if>
+            <if test="Jusho2 != null">JUSHO2,</if>
+            <if test="Jusho3 != null">JUSHO3,</if>
+            <if test="Tele != null">TELE,</if>
+            <if test="Mail != null">MAIL,</if>
+            <if test="Biko != null">BIKO,</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA,</if>
+            <if test="KouShinHiDuke != null">KOUSHIN_HIDUKE,</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA,</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE,</if>
+            <if test="DelFlag != null">DEL_FLAG,</if>
+            <if test="Status != null">STATUS,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="KJId != null">#{KJId},</if>
+            <if test="KaishaId != null">#{KaishaId},</if>
+            <if test="YakuShokuName != null">#{YakuShokuName},</if>
+            <if test="KaishaName != null">#{KaishaName},</if>
+            <if test="KiboShokuGyo != null">#{KiboShokuGyo},</if>
+            <if test="Kyoyu != null">#{Kyoyu},</if>
+            <if test="Jusho1 != null">#{Jusho1},</if>
+            <if test="Jusho2 != null">#{Jusho2},</if>
+            <if test="Jusho3 != null">#{Jusho3},</if>
+            <if test="Tele != null">#{Tele},</if>
+            <if test="Mail != null">#{Mail},</if>
+            <if test="Biko != null">#{Biko},</if>
+            <if test="KouShinSha != null">#{KouShinSha},</if>
+            <if test="KouShinHiDuke != null">#{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">#{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">#{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">#{DelFlag},</if>
+            <if test="Status != null">#{Status},</if>
+        </trim>
+    </insert>
+    <!--　変更kyujin -->
+    <update id="updateKyujin" parameterType="com.example.entity.Kyujin" useGeneratedKeys="true" >
+        UPDATE AIDIJAVA.KYUJIN_TABLE
+        <trim suffixOverrides="," prefix="SET">
+            <if test="YakuShokuName != null">YAKUSHOKU_NAME = #{YakuShokuName},</if>
+            <if test="KaishaName != null">KAISHA_NAME = #{KaishaName},</if>
+            <if test="kiboShokuGyo != null">YAKUSHOKU_WORK = #{KiboShokuGyo},</if>
+            <if test="Kyoyu != null">KYOYU = #{Kyoyu},</if>
+            <if test="Jusho1 != null">JUSHO1 = #{Jusho1},</if>
+            <if test="Jusho2 != null">JUSHO2 = #{Jusho2},</if>
+            <if test="Jusho3 != null">Jusho3 = #{Jusho3},</if>
+            <if test="Tele != null">TELE = #{Tele},</if>
+            <if test="Mail != null">MAIL = #{Mail},</if>
+            <if test="Biko != null">BIKO = #{Biko},</if>
+            <if test="KouShinSha != null">KOUSHIN_SHA = #{KouShinSha},</if>
+            <if test="KouShinHiDuke != null ">KOUSHIN_HIDUKE = #{KouShinHiDuke},</if>
+            <if test="SakuSeiSha != null">SAKUSEI_SHA = #{SakuSeiSha},</if>
+            <if test="SakuSeiHiDuke != null">SAKUSEI_HIDUKE = #{SakuSeiHiDuke},</if>
+            <if test="DelFlag != null">DEL_FLAG = #{DelFlag},</if>
+            <if test="Status != null">STATUS = #{Status},</if>
+        </trim>
+        WHERE KJ_ID = #{KJId}
+    </update>
+    <!--　変更kyujin -->
+    <update id="updateKyujindel" parameterType="com.example.entity.Kyujin" useGeneratedKeys="true" >
+        UPDATE AIDIJAVA.KYUJIN_TABLE
+        <trim suffixOverrides="," prefix="SET">
+            <if test="DelFlag != null">DEL_FLAG = #{DelFlag},</if>
+        </trim>
+        WHERE KJ_ID = #{KJId}
+    </update>
+</mapper>
