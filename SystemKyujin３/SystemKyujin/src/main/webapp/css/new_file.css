@@ -1,0 +1,324 @@
+/* CSS Document */
+* {
+  font-family: "Microsoft YaHei UI", 'microsoft yahei', '微软雅黑';
+}
+ 
+body {
+  margin: 0;
+  font-size: 12px;
+  font-family: "Microsoft YaHei UI", 'microsoft yahei', '微软雅黑';
+  line-height: 1.5;
+  color: #333;
+}
+ 
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+img,
+form,
+input,
+p,
+th,
+td
+ {
+  border: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+ 
+ 
+a {
+  color: #333;
+  text-decoration: none;
+}
+ 
+a:hover {
+  color: #f60;
+  text-decoration: none;
+}
+ 
+ 
+.logo {
+  float: left;
+  font-size: 50px;
+}
+ 
+.top_link {
+  width: 100%;
+  background-color: #f1f1f1;
+}
+ 
+.version {
+  width: 1100px;
+  margin: 0 auto;
+  text-align: right;
+ 
+}
+ 
+.logobox {
+  overflow: hidden;
+  padding: 30px 0 20px 0;
+}
+ 
+.header {
+  width: 1100px;
+  margin: 0 auto;
+  text-align: right;
+  overflow: hidden;
+}
+ 
+ 
+.version {
+ 
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+}
+ 
+.navbox {
+  height: 43px;
+  line-height: 42px;
+  background-color: #F08B3D;
+  margin-bottom: 20px;
+}
+ 
+.nav {
+  width: 1300px;
+  margin: 0 auto;
+  text-align: right;
+  overflow: hidden;
+}
+ 
+.nav ul li {
+  float: left;
+  width: 200px;
+  text-align: center;
+}
+ 
+.nav ul li a {
+  font-size: 26px;
+  color: black;
+}
+ 
+.searchBox {
+  width: 548px;
+  margin: 0px 0 0 105px;
+  float: left;
+  height: 38px;
+  border: 2px solid #F08B3D;
+  position: relative;
+  border-radius: 2px;
+  background: #fff;
+}
+ 
+.searchBox .searchInput {
+  border: none;
+  line-height: 24px;
+  height: 24px;
+  width: 375px;
+  margin: 7px 0;
+  float: left;
+  font-size: 14px;
+  outline: none;
+}
+ 
+.searchBox .searchBtn {
+  width: 68px;
+  height: 42px;
+  margin: -2px -2px 0 0;
+  background: #F08B3D url(../images/search.png) no-repeat center;
+  background-color: #F08B3D;
+  border: none;
+  float: right;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+ 
+.main{ width: 1100px; margin: 0 auto; overflow: hidden;}
+.menu{ width:290px; float: left; background-color: #f9f9f9; padding:10px  20px;}
+.menu ul li{ line-height: 38px; overflow: hidden; height: 38px;}
+.menu ul li strong{ margin-right: 10px;}
+.menu ul li a{ margin: 0 10px 0 0; color: #666; }
+ 
+ 
+.title {
+  padding: 30px 0
+}
+ 
+.title h3 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+ 
+.title p {
+  text-align: center;
+  color: #888;
+  margin-bottom: 15px;
+}
+ 
+.list { overflow: hidden;}
+.list ul li {
+  height: 130px;
+  width: 350px;
+  float: left;
+  margin: 0 14px 16px 0;
+  background: #fff;
+  border: 1px solid #eef0f5;
+}
+ 
+.subbox {
+  display: block;
+  height: 130px;
+  width: 350px;
+ 
+  padding: 16px 20px;
+  box-sizing: border-box;
+}
+.subtop{ overflow: hidden;}
+.name {
+  position: relative;
+ 
+  font-size: 15px;
+  color: #414a60;
+  margin-right: 8px;
+ 
+  overflow: hidden;
+ 
+  float: left;
+ 
+}
+.salary{ float: right; color: #f90; font-size: 14px;}
+.job-text{ line-height: 40px;}
+.user-info img{ width: 30px; height: 30px; float: left; margin-right: 10px;}
+ 
+.commanybox {    border-top: 1px solid #eef0f5; line-height: 30px; padding-top: 12px;}
+.commany-info  span{ font-size: 14px; margin-right: 10px;}
+ 
+ 
+ 
+.footer {
+ border-top: 5px solid #F08B3D;
+ 
+  color: #888;
+  overflow: hidden;
+  padding: 20px 0 0;
+ 
+}
+ 
+.footmain {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+ 
+.footbox {
+  width: 250px;
+ 
+}
+ 
+.widget-title {
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+ 
+.footer a {
+  color: #888;
+}
+ 
+.foottext img {
+  padding: 4px;
+  border: solid 1px #424242;
+  float: left;
+  margin-right: 10px;
+}
+ 
+.foottext ul li {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+ 
+.footblog ul li {
+  line-height: 28px;
+}
+ 
+.footimg {
+  overflow: hidden;
+}
+ 
+.footimg ul li {
+  float: left;
+  margin-right: 20px;
+  text-align: center;
+}
+ 
+.footimg ul li img {
+  padding: 4px;
+  border: solid 1px #424242;
+  width: 50px;
+  height: 50px;
+}
+ 
+.footabout p {
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+ 
+.foottips {
+  background: #1b1b1b;
+  width: 100%;
+}
+ 
+.footlayout {
+  background: #1b1b1b url(../images/bg-afterfooter.png) center center no-repeat;
+  width: 1100px;
+  margin: 0 auto;
+  height: 90px;
+  line-height: 90px;
+  color: #999;
+}
+
+#login-box{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 5%;
+	text-align: center;
+    border: 2px solid #EEF0F5;
+	padding: 28px 40px;
+}
+
+
+
+#login-box .form .item input{
+	width: 380px;
+	font-size: 18px;
+	border: 0;
+	border: 2px solid black;
+	padding:15px 120px;
+  color: black;
+
+}
+#login-box button{
+	margin-top: 15px;
+	width:180px;
+	height: 30px;
+	font-size: 20px;
+	font-weight: 700px;
+	border: 2px solid black;;
+}
