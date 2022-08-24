@@ -1,0 +1,36 @@
+
+.str {
+	color: #f03;
+	font-size: 13px;
+	margin: 0 0 0 10px;
+	background: none;
+}
+
+
+
+/*-------------------------------------
+	table
+-------------------------------------*/
+
+
+/*基本*/
+
+table {
+	border-top: none;
+}
+
+table tbody th {
+	padding: 25px 0 23px 0;
+	border: none;
+	background: none;
+	color: #808080;
+	width: 175px;
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+table tbody td {
+	padding: 25px 0 23px 0;
+	border: none;
+	line-height: 1.8;
+}
